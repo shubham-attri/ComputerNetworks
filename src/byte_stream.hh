@@ -3,7 +3,10 @@
 
 #include <deque>
 #include <string>
+#include <stdlib.h>
 //! \brief An in-order byte stream.
+
+using namespace std;
 
 //! Bytes are written on the "input" side and read from the "output"
 //! side.  The byte stream is finite: the writer can end the input,
@@ -12,10 +15,20 @@ class ByteStream {
   private:
     // Your code here -- add private members as necessary.
 
+    deque <char> bufferarray;
+    size_t bits_written;
+    size_t bits_read;
+    bool input_end;
+    bool input_start = true;
+    bool capacity_overflow = false;
+    bool bits_written_not_empty = true;
+    bool bits_read_not_empty = true;
+    size_t maxcapacity;
+
     bool _error{};  //!< Flag indicating that the stream suffered an error.
 
   public:
-    //! Construct a stream with room for `capacity` bytes.
+    //! Construct a stream with room for `capacity` bytes.y
     ByteStream(const size_t capacity);
 
     //! \name "Input" interface for the writer
