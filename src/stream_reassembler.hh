@@ -2,11 +2,13 @@
 #define SPONGE_LIBSPONGE_STREAM_REASSEMBLER_HH
 
 #include "byte_stream.hh"
+using namespace std;
 
 #include <algorithm>
 #include <cstdint>
 #include <deque>
 #include <iostream>
+#include <map>
 #include <string>
 
 //! \brief A class that assembles a series of excerpts from a byte stream (possibly out of order,
@@ -14,8 +16,13 @@
 class StreamReassembler {
   private:
     // Your code here -- add private members as necessary.
+    map<size_t, string> _unassembled;
+    size_t current_assembled_index,_nxt_idx;
+    size_t idx_eof;
+    size_t uidx;
 
     ByteStream _output;  //!< The reassembled in-order byte stream
+    size_t _capacity;
 
   public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
