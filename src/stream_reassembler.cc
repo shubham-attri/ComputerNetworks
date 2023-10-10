@@ -29,6 +29,15 @@ StreamReassembler::StreamReassembler(const size_t capacity)
 //! \details This function accepts a substring (aka a segment) of bytes,
 //! possibly out-of-order, from the logical stream, and assembles any newly
 //! contiguous substrings and writes them into the output stream in order.
+/**
+ * This function takes a substring of data, its index and a boolean eof as input.
+ * It then processes the substring and assembles it with the previously unassembled data.
+ * The assembled data is then written to the output stream.
+ * 
+ * @param data The substring of data to be processed and assembled.
+ * @param index The index of the substring in the original data stream.
+ * @param eof A boolean indicating whether this is the end of the data stream.
+ */
 void StreamReassembler::push_substring(const string &data, const size_t index, const bool eof) {
 
     auto iterator = _unassembled.upper_bound(index);

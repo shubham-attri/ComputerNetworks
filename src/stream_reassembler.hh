@@ -46,7 +46,7 @@ class StreamReassembler {
     ByteStream &stream_out() { return _output; }
     //!@}
 
-    //! The number of bytes in the substrings stored but not yet reassembled
+//! The number of bytes in the substrings stored but not yet reassembled
     //!
     //! \note If the byte at a particular index has been pushed more than once, it
     //! should only be counted once for the purpose of this function.
